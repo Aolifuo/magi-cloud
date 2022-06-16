@@ -1,0 +1,33 @@
+.slide {
+    position: absolute;
+    width: 42rem;
+    
+    background-color: rgb(21, 21, 21);
+    border-radius: 1rem;
+}
+
+.title > div:first-child {
+    margin: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.title > div:nth-child(2) {
+    margin-left: 2rem;
+    font-size: 1.4rem;
+}
+
+.line {
+    margin-left: 5%;
+    margin-top: 2rem;
+    width: 90%;
+    height: 0.1rem;
+    background-color: rgba(240, 248, 255, 0.5);
+}
+
+.tableBox {
+    margin-top: 1rem;
+    height: calc(100vh - 26rem);
+    font-size: 1.4rem;
+    overflow-y: scroll;
+}

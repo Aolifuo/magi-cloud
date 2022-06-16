@@ -1,0 +1,69 @@
+.bottomNav {
+    display: flex;
+    height: 7rem;
+    align-items: center;
+    background-color: rgba(240, 248, 255, 0.2);
+}
+
+.left {
+    display: flex;
+    width: 30%;
+    padding-left: 2rem;
+    align-items: center;
+}
+
+.left div:first-child {
+    margin-right: 1rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: black;
+    background-size: 100%;
+    border-radius: 1rem;
+}
+
+.left div:nth-child(2) {
+    max-width: 12rem;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.left img:last-child {
+    margin-bottom: 1.8rem;
+    margin-left: 1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.middle {
+    width: 40%;
+}
+
+.right {
+    display: flex;
+    width: 30%;
+    padding-right: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.right div:first-child {
+    display: flex;
+    margin-right: 1rem;
+    width: 3rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid skyblue;
+}
+ 
+.right span {
+    font-size: 1.2rem;
+    color: skyblue;
+}
+
+.right img {
+    margin: 0.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+}

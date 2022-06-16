@@ -1,0 +1,71 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control  {
+    display: flex;
+}
+
+.control img {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+}
+
+.control img:hover {
+    filter: drop-shadow(0.3rem 0.3rem 0.1rem rgb(120, 192, 226));
+}
+
+.progressView {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.progressBar {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 1rem;
+    width: 33rem;
+}
+
+.progressBar > div {
+    margin-top: 0.5rem;
+    height: 0.3rem;
+    background-color: aliceblue;
+    background-size: 1rem;
+    border-radius: 1rem;
+}
+
+.progressBar > div > div {
+    height: 100%;
+    background-color: rgba(56, 196, 250);
+}
+
+.progressBar input[type="range"] {
+    width: 100%;
+    background-color: transparent;
+    appearance: none;
+    transform: translateY(-1.15rem);
+}
+
+.progressBar input[type="range"]::-webkit-slider-thumb {
+    height: 0.3rem;
+    appearance: none;
+}
+
+.progressBar:hover input[type="range"]::-webkit-slider-thumb {
+    margin-left: -0.2rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: rgb(56, 196, 250);
+    clip-path: circle();
+}
+
+.progressBar:hover > div > div {
+    height: 0.4rem;
+}

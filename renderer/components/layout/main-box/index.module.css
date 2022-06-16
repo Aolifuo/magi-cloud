@@ -1,0 +1,16 @@
+.mainBox {
+    display: flex;
+    box-sizing: border-box;
+
+    min-width: 100rem;
+
+    flex-direction: column;
+    flex-basis: 110rem;
+    flex-shrink: 1;
+
+    background-color: transparent;
+    border: 0.8rem solid;
+    border-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%) 1;
+    box-shadow: 0 0 0.5rem 0.1rem rgb(41, 44, 52);
+    clip-path: inset(0 0 round 0.8rem);
+}

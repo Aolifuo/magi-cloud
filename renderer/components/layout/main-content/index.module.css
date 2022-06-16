@@ -1,0 +1,6 @@
+.mainContent {
+    height: 100%;
+    flex-grow: 1;
+    background-color: transparent;
+    overflow-y: scroll;
+}

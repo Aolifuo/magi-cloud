@@ -1,0 +1,24 @@
+.myPlaylist {
+
+}
+
+.playlistInfo {
+    padding: 3rem;
+}
+
+.playlistImage {
+    width: 18rem;
+    height: 18rem;
+    background-color: aliceblue;
+    background-size: 100%;
+    border-radius: 1rem;
+}
+
+.tab {
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+}
+
+.tableBox {
+    font-size: 1.5rem;
+}

@@ -1,33 +1,32 @@
-import { useEffect } from "react";
+
 
 class EventBus {
-  instance: HTMLElement | null;
+  events: Map<string, Function[]>;
 
   constructor() {
-    this.instance = null;
+    this.events = new Map();
   }
 
-  dispatch = (type: string) => {
-    this.instance?.dispatchEvent(new CustomEvent(type));
+  dispatch = (channel: string) => {
+    this.events.get(channel)?.forEach((fn) => fn());
   };
 
-  subscribe = (type: string, listener: EventListenerOrEventListenerObject) => {
-    this.instance?.addEventListener(type, listener);
+  on = <Fn extends Function>(channel: string, listener: Fn) => {
+    if (this.events.has(channel)) {
+      this.events.get(channel)!.push(listener);
+      return;
+    }
+    this.events.set(channel, [listener]);
   };
 
-  unsubscribe = (type: string, listener: EventListenerOrEventListenerObject) => {
-    this.instance?.removeEventListener(type, listener);
+  off = <Fn extends Function>(channel: string, listener: Fn) => {
+    if (!this.events.get(channel)) {
+      return;
+    }
+    this.events.set(channel, this.events.get(channel)!.filter((fn) => fn != listener));
   };
 }
 
 const eventBus = new EventBus();
 
-export default function useEventBus() {
-  useEffect(() => {
-    if (eventBus.instance === null) {
-      eventBus.instance = document.createElement('event-bus');
-    }
-  }, []);
-
-  return eventBus;
-}
+export default eventBus;

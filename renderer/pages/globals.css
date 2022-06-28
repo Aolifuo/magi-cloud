@@ -1,5 +1,7 @@
 html {
   font-size: 10px;
+  --top-height: 60px;
+  --bottom-height: 70px;
 }
 body {
   padding: 0;

@@ -3,13 +3,11 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
-  useTransition,
 } from 'react';
 import { MusicContext, setMusic } from '@/state/context/music-context';
 import { IMusicBasic } from '@/interfaces';
-import useEventBus from '@/state/event/event-bus';
+import eventBus from '@/state/event/event-bus';
 import { timeTransfer } from '@/util/toolkit';
 import { createTable } from '@/components/basic/table';
 import styles from './index.module.css';
@@ -32,24 +30,11 @@ const ratios = [3, 1, 1];
 const SlideTable = React.memo(createTable<IRecord>());
 
 const Slide:React.FC = () => {
-  const [right, setRight] = useState(0);
   const [display, setDisplay] = useState(false);
   const [musicState, musicDispatch] = useContext(MusicContext);
-  const [, startTransition] = useTransition();
-  const eventBus = useEventBus();
-  const mainBoxRef = useRef<HTMLDivElement>();
 
   const handleDisplay = () => {
     setDisplay((prev) => !prev);
-  };
-
-  const handleSlidePos = () => {
-    if (!display) {
-      return;
-    }
-    startTransition(() => {
-      setRight(() => mainBoxRef.current!.offsetLeft + 10);
-    });
   };
 
   const handleMusicState = useCallback((target: IMusicBasic[], index: number) => {
@@ -57,19 +42,9 @@ const Slide:React.FC = () => {
   }, []);
 
   useEffect(() => {
-    mainBoxRef.current = document.getElementById('main-box') as HTMLDivElement;
-    eventBus.subscribe('toggle-slide', handleDisplay);
-    return () => eventBus.unsubscribe('toggle-slide', handleDisplay);
+    eventBus.on('toggle-slide', handleDisplay);
+    return () => eventBus.off('toggle-slide', handleDisplay);
   }, []);
-
-  useEffect(() => {
-    if (!display) {
-      return () => {};
-    }
-    handleSlidePos();
-    window.addEventListener('resize', handleSlidePos);
-    return () => window.removeEventListener('resize', handleSlidePos);
-  }, [display]);
 
   const records = useMemo(() => (
     musicState.playlist
@@ -88,10 +63,7 @@ const Slide:React.FC = () => {
   }
 
   return (
-    <div
-      className={styles.slide}
-      style={{ right }}
-    >
+    <div className={styles.slide}>
       <div className={styles.title}>
         <div>当前播放</div>
         <div>

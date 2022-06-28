@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 interface IThemeState {
-  onElectron: boolean;
+
 }
 
 interface IThemeAction {
@@ -32,9 +32,9 @@ type IThemeContextValue = [IThemeState, Dispatch<IThemeAction>];
 
 const ThemeContext = createContext({} as IThemeContextValue);
 
-const ThemeProvider: FC<PropsWithChildren<{ onElectron: boolean }>> = ({ children, onElectron }) => {
+const ThemeProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [themeState, themeDispatch] 
-    = useReducer(themeReducer, { onElectron } as IThemeState);
+    = useReducer(themeReducer, {} as IThemeState);
 
   return (
     <ThemeContext.Provider value={[themeState, themeDispatch]}>

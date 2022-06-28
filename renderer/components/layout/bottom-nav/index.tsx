@@ -8,8 +8,8 @@ import React, {
 import { MusicContext } from '@/state/context/music-context';
 import ProgressBar from '@/components/widget/progress-bar';
 import VolumeBar from '@/components/widget/volume-bar';
-import useEventBus from '@/state/event/event-bus';
 import { useAudio } from '@/components/widget/audio';
+import eventBus from '@/state/event/event-bus';
 import styles from './index.module.css';
 
 const pre = process.env.iconPrefix;
@@ -18,7 +18,6 @@ const BottomNav: React.FC<unknown> = () => {
   const [volumeDisplay, setVolumeDisplay] = useState(false);
   const [volumePos, setvolumePos] = useState({ left: 0, top: 0 });
   const [musicState] = useContext(MusicContext);
-  const eventBus = useEventBus();
   const [myAudio] = useAudio();
   const delayRef = useRef<NodeJS.Timeout>();
 

@@ -33,12 +33,6 @@ const ProviderAggregate: FC<PropsWithChildren<{}>> = ({ children }) => {
 };
 
 const Home: NextPage = () => {
-  const { onElectron } = publicRuntimeConfig;
-  const background = onElectron
-    ? { backgroundColor: 'transparent' } : {}
-  const centerHeight = onElectron
-    ? { height: 'calc(100vh - 14rem)' } : { height: '55rem' }
-
   return (
     <div>
       <Head>
@@ -47,18 +41,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/icons/cloud.svg" />
       </Head>
 
-      <div 
-        className={styles.main}
-        style={background}
-      >
-        <ThemeProvider onElectron={onElectron}>
+      <div className={styles.main}>
+        <ThemeProvider>
           <MainBox>
             <ProviderAggregate>
               <TopNav />
-              <div 
-                className={styles.centerBox}
-                style={centerHeight}
-              >
+              <div className={styles.centerBox}>
                 <AsideNav />
                 <MainContent>
                   <SwitchContent />

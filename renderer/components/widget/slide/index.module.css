@@ -1,5 +1,6 @@
 .slide {
     position: absolute;
+    right: 1rem;
     width: 42rem;
     
     background-color: rgb(21, 21, 21);
